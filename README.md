@@ -1,7 +1,7 @@
 # simple-webhook-spammer
 
 # requirements 
-- in cmd/terminal
+in cmd/terminal write
 - pip install requests
 - pip install crayons
 # usage
