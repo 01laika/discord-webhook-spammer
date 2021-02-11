@@ -2,7 +2,7 @@
 
 # requirements 
 - pip install requests
-- pip install crayons
+- pip install rich
 # usage
 - python webhook.py
 - input webhook to spam
