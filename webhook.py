@@ -1,28 +1,33 @@
 import requests
-import crayons
 import time
 import json
+import rich
+from rich.console import Console
+console = Console()
 
 def main():
-    hook = input(crayons.red("what is the webhook url?\t=> "))
-
+    hook = console.input("[bold green]input webhook url =>[/bold green] ")
+    
     try:
         r = requests.get(hook)
         if r.json()["message"]:
-            print(crayons.red("invalid webhook!\n"))
+            console.print("[bold red]invalid webhook![/bold red]\n")
             time.sleep(1)
             main()
     except KeyError:
         pass
 
-    content = input(crayons.red("input message to spam\t=> "))
+    content = console.input("[bold green]input message to spam => ")
     headers = {"content-type": "application/json"}
     data = {"content": content}
-    try: delay = float(input(crayons.red("delay per each message sent\t=> ")))
+    try:
+        delay = float(console.input("[bold green]delay per each message sent => [/bold green]"))
     except ValueError:
-        print(crayons.red("put a number in"))
+        console.print("[bold red]put a number in[/bold red]")
+        time.sleep(1)
+        main()  
     else:
-        print(crayons.green("{+} spam sent! {+}\nctrl-c to stop!"))
+        console.print("""[bold red]  ctrl-c to stop!\n {!} spam sent {!}[/bold red]""")
 
         while True:
             time.sleep(delay)
