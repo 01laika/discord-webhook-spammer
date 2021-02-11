@@ -33,7 +33,7 @@ def main():
             time.sleep(delay)
             r = requests.post(hook, headers=headers, json=data)
             if r.status_code == 429:
-                print(crayons.red("you are being rate limited!"))
+                console.print("[bold red]you are being rate limited!")
 
 if __name__ == "__main__":
     main()
